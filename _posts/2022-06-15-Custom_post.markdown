@@ -6,7 +6,7 @@ categories: jekyll update
 ---
 
 하나씩 바꿀테다
-'어렵당'
+`어렵당`
 
 이 아래는 그대로다
 
