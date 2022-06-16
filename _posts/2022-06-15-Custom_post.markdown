@@ -2,7 +2,7 @@
 layout: post
 title:  "커스텀 포스트"
 date:   2022-06-15 15:37:18 +0900
-categories: jekyll update
+categories: 
 ---
 
 하나씩 바꿀테다
