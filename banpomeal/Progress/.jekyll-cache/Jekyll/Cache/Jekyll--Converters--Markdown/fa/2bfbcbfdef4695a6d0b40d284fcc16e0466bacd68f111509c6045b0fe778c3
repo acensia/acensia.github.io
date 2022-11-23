@@ -1,0 +1,66 @@
+I"á<h2 id="typescript">TypeScript</h2>
+<p>To complement type explicity of JavaScript<br />
+Compiled as JavaScript<br />
+Required software : Nodejs</p>
+
+<h2 id="type-of-ts">Type of TS</h2>
+
+<figure class="highlight"><pre><code class="language-typescript" data-lang="typescript"><span class="kd">const</span> <span class="nx">val</span> <span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">hi</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">object</span> <span class="p">:</span> <span class="p">{</span>
+    <span class="nl">args1</span> <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nx">args2</span> <span class="p">:</span> <span class="kr">number</span><span class="p">,</span>
+<span class="p">}</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">args1</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">hi</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">args2</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="kd">type</span> <span class="nx">type_name</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">args1</span> <span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+    <span class="nx">args2</span><span class="p">?</span> <span class="p">:</span> <span class="kr">number</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">obj2</span> <span class="p">:</span> <span class="nx">type_name</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">args1</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">func1</span><span class="p">(</span><span class="nx">para</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">:</span> <span class="nx">type_name</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">para</span><span class="p">,</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">func2</span> <span class="o">=</span> <span class="p">(</span><span class="nx">para</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">:</span> <span class="nx">type_name</span> <span class="o">=&gt;</span> <span class="p">({</span><span class="nx">para</span><span class="p">});</span></code></pre></figure>
+
+<p>TS can give a value type explicity with the way above.<br />
+TS uses value types of JS.</p>
+
+<p>Here is TSâ€™s charecteristic types:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>.</th>
+      <th>.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>readyonly</td>
+      <td>make values read-only</td>
+    </tr>
+    <tr>
+      <td>tuple</td>
+      <td>specify an array with a min length and type position</td>
+    </tr>
+    <tr>
+      <td>any</td>
+      <td>take type explicity away (like JS)</td>
+    </tr>
+    <tr>
+      <td>unknown</td>
+      <td>used when you need to act after knowing type of var(w/ typeof)</td>
+    </tr>
+    <tr>
+      <td>never</td>
+      <td>used when a path of code should never run</td>
+    </tr>
+  </tbody>
+</table>
+
+:ET

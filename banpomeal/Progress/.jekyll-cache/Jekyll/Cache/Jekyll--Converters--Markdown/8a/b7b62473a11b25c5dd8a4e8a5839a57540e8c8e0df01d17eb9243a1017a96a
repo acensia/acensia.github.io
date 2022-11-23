@@ -1,0 +1,7 @@
+I"á<h2 id="button-input-blank-hyperlink">Button, Input blank, Hyperlink</h2>
+<p><strong>HTML elements</strong></p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button&gt;</span> <span class="nt">&lt;/button&gt;</span>  
+<span class="nt">&lt;input</span> <span class="nt">/&gt;</span>  
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;&lt;/a&gt;</span></code></pre></figure>
+:ET

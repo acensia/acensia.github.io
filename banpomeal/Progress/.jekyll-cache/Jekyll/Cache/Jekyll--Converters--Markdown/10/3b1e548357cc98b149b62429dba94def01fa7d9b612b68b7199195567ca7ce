@@ -1,0 +1,63 @@
+I"	<h2 id="pre-settings">Pre-settings</h2>
+<p>| :—— |:— | :— |
+| Requirement | nvm, nodejs, Express, Pug, app.get(), Babel, nodemon |
+| Knowledge | app.get(), (req, res), package.json |
+I followed the steps below:</p>
+<ul>
+  <li>
+    <ol>
+      <li>
+        <ul>
+          <li>Create package.json file.</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>
+        <ul>
+          <li>Install nodemon and babel.</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>
+        <ul>
+          <li>Create js file for server.</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>
+        <ul>
+          <li>Install express and pug.</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <ol>
+      <li>
+        <ul>
+          <li>Import express on js file.</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<p>And then write some settings on server.js file.</p>
+
+<h2 id="background-knowledge">Background Knowledge</h2>
+<h1 id="http-vs-websocket">http vs WebSocket</h1>
+
+<p>http : user sends request and server sends response, stateless(server can’t remember user, then user send cookie to let server reply)</p>
+
+<p>WebSocket : connection establised when user sends request, able to access bi-directionally.</p>
+
+:ET

@@ -1,0 +1,14 @@
+I"�<h2 id="pre-settings">Pre-settings</h2>
+<p>| needs | . | . |
+| :—— |:— | :— |
+| Requirement | nvm, nodejs, Express, Pug, app.get(), Babel, nodemon | . |
+| Knowledge | app.get(), (req, res), package.json | . |
+I followed the steps below:</p>
+<ol>
+  <li>Create package.json file.</li>
+  <li>Install nodemon and babel.</li>
+  <li>Create js file for server.</li>
+  <li>Install express and pug.</li>
+  <li>Import express on js file.</li>
+</ol>
+:ET

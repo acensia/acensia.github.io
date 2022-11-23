@@ -1,0 +1,71 @@
+I"c<h2 id="link-js-with-html">Link JS with HTML</h2>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">title</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">title</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">dir</span><span class="p">(</span><span class="nx">title</span><span class="p">);</span>
+
+<span class="nx">title</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">New Text</span><span class="dl">"</span><span class="p">;</span></code></pre></figure>
+
+<p>Object “Document” let JS be able to access HTML elements.<br />
+<strong>getElementByID, getElementByClassname, getElementByTagname.. etc</strong></p>
+
+<p>Nomad’s Suggestion : <strong>querySelector, querySelectorAll</strong></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">const</span> <span class="nx">title</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">qeurySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">div.class_name:first-child h1</span><span class="dl">"</span><span class="p">);</span>
+<span class="c1">//Maybe I can erase 'div'</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">title</span><span class="p">);</span>
+<span class="nx">title</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">new_text</span><span class="dl">"</span><span class="p">;</span></code></pre></figure>
+
+<p>We can use ‘console’ object to check condition of object: console.log, console.dir, etc…</p>
+
+<h2 id="event-check">Event check</h2>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">handleTitleClick</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">title was clicked!</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">title</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">title Clicked!</span><span class="dl">"</span><span class="p">;</span>
+    <span class="nx">title</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">;</span> <span class="c1">//changing CSS w/ JS</span>
+    
+<span class="p">}</span>
+
+
+<span class="nx">title</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">handleTitleClick</span><span class="p">);</span></code></pre></figure>
+
+<p>We can ‘listen’ events of HTML: name of properties starts with ‘on’. Name of events can be also found googling ‘Web APIs’.</p>
+
+<p>Anothe way to check event is using <em>oneventname</em> properties.
+But handling branch with changing classname can make some problem: cause it loses previous name.</p>
+
+<p><strong>Use CSS class to toggle</strong></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">handleTitleClick</span><span class="p">(){</span>
+    <span class="kd">const</span> <span class="nx">clickedClass</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">clicked</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">h1</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">clickedClass</span><span class="p">)){</span>
+        <span class="nx">h1</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">clickedClass</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span><span class="p">{</span>
+        <span class="nx">h1</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">clickedClass</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+<span class="p">}</span>
+
+
+<span class="nx">h1</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">handleTitleClick</span><span class="p">);</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">h1</span><span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="no">green</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.some</span><span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span><span class="m">#ff00ff</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.clicked</span><span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="m">#00aaaa</span><span class="p">;</span>
+    <span class="nl">font-family</span><span class="p">:</span> <span class="s2">'Courier New'</span><span class="p">,</span> <span class="n">Courier</span><span class="p">,</span> <span class="nb">monospace</span><span class="p">;</span>
+    <span class="nl">transition</span><span class="p">:</span> <span class="n">color</span> <span class="m">0.5s</span> <span class="n">ease-in-out</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><em>※When other settings are the same, CSS class below is applied.</em></p>
+
+:ET
