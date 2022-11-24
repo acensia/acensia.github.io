@@ -24,9 +24,9 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: GithubPage 연습실
+title: BanpoMeal 연습실
 email: acensia@naver.com
-author: Navongs
+author: acensia
 
 # Copyright setting
 # You can use any html code, currently below placeholders are available:
@@ -47,8 +47,8 @@ description: >- # this means to ignore newlines until "baseurl:"
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://acensia.github.io/Progress" # the base hostname & protocol for your site, e.g. https://example.com
+baseurl: "/Progress" # the subpath of your site, e.g. /blog
+url: "https://acensia.github.io/" # the base hostname & protocol for your site, e.g. https://example.com
 favicon: "" # the favicon for your site
 
 # Yat date format
