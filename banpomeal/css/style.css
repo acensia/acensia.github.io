@@ -1,3 +1,15 @@
+.body{
+    position: relative;
+}
+
+.robot{
+    position: absolute;
+    right:0;
+    
+}
+
+
+
 .title{
     background-image: url(../src/img/upper_blackbar_edit.png);
     min-width: 1000px;
