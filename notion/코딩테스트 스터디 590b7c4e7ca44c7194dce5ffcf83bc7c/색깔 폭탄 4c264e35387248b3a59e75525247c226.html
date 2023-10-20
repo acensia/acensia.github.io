@@ -1,0 +1,845 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>색깔 폭탄</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="4c264e35-3872-48b3-a59e-75525247c226" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1558470598-a5dda9640f68?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">📃</span></div><h1 class="page-title">색깔 폭탄</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-person"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesPerson"><path d="M10.9536 7.90088C12.217 7.90088 13.2559 6.79468 13.2559 5.38525C13.2559 4.01514 12.2114 2.92017 10.9536 2.92017C9.70142 2.92017 8.65137 4.02637 8.65698 5.39087C8.6626 6.79468 9.69019 7.90088 10.9536 7.90088ZM4.4231 8.03003C5.52368 8.03003 6.42212 7.05859 6.42212 5.83447C6.42212 4.63843 5.51245 3.68945 4.4231 3.68945C3.33374 3.68945 2.41846 4.64966 2.41846 5.84009C2.42407 7.05859 3.32251 8.03003 4.4231 8.03003ZM1.37964 13.168H5.49561C4.87231 12.292 5.43384 10.6074 6.78711 9.51807C6.18628 9.14746 5.37769 8.87231 4.4231 8.87231C1.95239 8.87231 0.262207 10.6917 0.262207 12.1628C0.262207 12.7974 0.548584 13.168 1.37964 13.168ZM7.50024 13.168H14.407C15.4009 13.168 15.7322 12.8423 15.7322 12.2864C15.7322 10.8489 13.8679 8.88354 10.9536 8.88354C8.04492 8.88354 6.17505 10.8489 6.17505 12.2864C6.17505 12.8423 6.50635 13.168 7.50024 13.168Z"></path></svg></span>소유자</th><td><span class="user"><img src="https://lh3.googleusercontent.com/a/AATXAJwHji_UuD1ZsCAY0Mu-n0PDt7ExAMKhr-MpXgua=s100" class="icon user-icon"/>준혁 최</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>태그</th><td><span class="selected-value select-value-color-blue">삼성 SW 역량테스트</span><span class="selected-value select-value-color-green">코드트리</span></td></tr><tr class="property-row property-row-status"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesStatus"><path d="M8.75488 1.02344C8.75488 0.613281 8.41309 0.264648 8.00293 0.264648C7.59277 0.264648 7.25098 0.613281 7.25098 1.02344V3.11523C7.25098 3.51855 7.59277 3.86719 8.00293 3.86719C8.41309 3.86719 8.75488 3.51855 8.75488 3.11523V1.02344ZM3.91504 5.0293C4.20215 5.31641 4.69434 5.32324 4.97461 5.03613C5.26855 4.74902 5.26855 4.25684 4.98145 3.96973L3.53906 2.52051C3.25195 2.2334 2.7666 2.21973 2.47949 2.50684C2.19238 2.79395 2.18555 3.28613 2.47266 3.57324L3.91504 5.0293ZM10.9629 4.01758C10.6826 4.30469 10.6826 4.79688 10.9697 5.08398C11.2568 5.37109 11.749 5.36426 12.0361 5.07715L13.4854 3.62793C13.7725 3.34082 13.7725 2.84863 13.4785 2.55469C13.1982 2.27441 12.7061 2.27441 12.4189 2.56152L10.9629 4.01758ZM15.0234 8.78906C15.4336 8.78906 15.7822 8.44727 15.7822 8.03711C15.7822 7.62695 15.4336 7.28516 15.0234 7.28516H12.9385C12.5283 7.28516 12.1797 7.62695 12.1797 8.03711C12.1797 8.44727 12.5283 8.78906 12.9385 8.78906H15.0234ZM0.975586 7.28516C0.56543 7.28516 0.223633 7.62695 0.223633 8.03711C0.223633 8.44727 0.56543 8.78906 0.975586 8.78906H3.07422C3.48438 8.78906 3.83301 8.44727 3.83301 8.03711C3.83301 7.62695 3.48438 7.28516 3.07422 7.28516H0.975586ZM12.0361 10.9902C11.749 10.71 11.2568 10.71 10.9629 10.9971C10.6826 11.2842 10.6826 11.7764 10.9697 12.0635L12.4258 13.5127C12.7129 13.7998 13.2051 13.793 13.4922 13.5059C13.7793 13.2256 13.7725 12.7266 13.4854 12.4395L12.0361 10.9902ZM2.52051 12.4395C2.22656 12.7266 2.22656 13.2188 2.50684 13.5059C2.79395 13.793 3.28613 13.7998 3.57324 13.5127L5.02246 12.0703C5.31641 11.7832 5.31641 11.291 5.03613 11.0039C4.74902 10.7168 4.25684 10.71 3.96973 10.9971L2.52051 12.4395ZM8.75488 12.9658C8.75488 12.5557 8.41309 12.207 8.00293 12.207C7.59277 12.207 7.25098 12.5557 7.25098 12.9658V15.0576C7.25098 15.4609 7.59277 15.8096 8.00293 15.8096C8.41309 15.8096 8.75488 15.4609 8.75488 15.0576V12.9658Z"></path></svg></span>상태</th><td><span class="status-value select-value-color-green"><div class="status-dot status-dot-color-green"></div>Done</span></td></tr></tbody></table></header><div class="page-body"><blockquote id="72e9a6b0-e8e2-4d65-b558-fbffbbf003ba" class="">문제 url : <a href="https://www.codetree.ai/training-field/frequent-problems/problems/colored-bomb/description?page=1&amp;pageSize=20">https://www.codetree.ai/training-field/frequent-problems/problems/colored-bomb/description?page=1&amp;pageSize=20</a></blockquote><hr id="e36b1e96-6df1-417d-8ec4-2cbd6f8aaaf1"/><ul id="0c7d3540-6ca5-4416-a785-eb898b79da96" class="toggle"><li><details open=""><summary><strong>솔루션 코드</strong></summary><pre id="7418d4a9-15a0-42c1-8560-bae0b8498890" class="code"><code>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;set&gt;
+
+using namespace std;
+
+int n, m;
+vector&lt;vector&lt;int&gt;&gt; map;
+vector&lt;vector&lt;int&gt;&gt; visit;
+vector&lt;pair&lt;int, int&gt;&gt; bomb_set;
+int MAX;
+int total;
+
+
+
+
+void add(pair&lt;int, int&gt; &amp;target, pair&lt;int, int&gt; val){
+    target.first += val.first;
+    target.second += val.second;
+}
+
+void check(int i, int j, int color, pair&lt;int, int&gt; &amp;coord, pair&lt;int, int&gt; &amp;bomb_red, vector&lt;pair&lt;int, int&gt;&gt; &amp;one_set){
+    if(visit[i][j] == color) return;
+    if(map[i][j] == -1) return;
+    if(map[i][j] == -2) return;
+    if(map[i][j] != 0 &amp;&amp; map[i][j] != color) return;
+
+    visit[i][j] = color;
+    // cout &lt;&lt; i &lt;&lt; &quot;-&quot;&lt;&lt;j&lt;&lt;&quot; for &quot;&lt;&lt;color&lt;&lt;endl;
+    if(coord.first == i &amp;&amp; coord.second &gt; j) coord.second = j;
+    if(coord.first &lt; i) {
+        coord.first = i;
+        coord.second = j;
+    }
+    if(map[i][j] == 0) add(bomb_red, {1, 1});
+    if(map[i][j] == color) add(bomb_red, {1, 0});
+
+    one_set.push_back({i, j});
+    if(i != 0) check(i-1, j, color, coord, bomb_red, one_set);
+    if(i != n-1) check(i+1, j, color, coord, bomb_red, one_set);
+    if(j != 0) check(i, j-1, color, coord, bomb_red, one_set);
+    if(j != n-1) check(i, j+1, color, coord, bomb_red, one_set);
+}
+
+void search(){
+    visit = vector&lt;vector&lt;int&gt;&gt;(n, vector&lt;int&gt;(n, -1));
+    pair&lt;int, int&gt; max_min = {1, MAX};
+    pair&lt;int, int&gt; corner = {-1, n};
+
+    for(int i=n-1; i&gt;-1; --i){
+        for(int j=0; j&lt;n; ++j){
+            if(visit[i][j]&gt;0) continue;
+            if(map[i][j] == -1) continue;
+            if(map[i][j] == -2) continue;
+            if(map[i][j] == 0) continue;
+            // cout &lt;&lt; &quot;start&quot;&lt;&lt;i&lt;&lt;&quot;,&quot;&lt;&lt;j&lt;&lt;endl;
+            pair&lt;int, int&gt; bomb_red = {0, 0};
+            pair&lt;int, int&gt; coord = {i, j};
+            vector&lt;pair&lt;int, int&gt;&gt; one_set;
+            int color = map[i][j];
+            // start check
+            check(i, j, color, coord, bomb_red, one_set);
+            // cout&lt;&lt;bomb_red.first&lt;&lt;&quot;,&quot;&lt;&lt;bomb_red.second&lt;&lt;endl;
+            // cout&lt;&lt;coord.first&lt;&lt;&quot;,&quot;&lt;&lt;coord.second&lt;&lt;endl;
+            if(bomb_red.first == bomb_red.second) continue;
+            if(bomb_red.first == 1) continue;
+            if(bomb_red.first == max_min.first &amp;&amp; bomb_red.second &lt; max_min.second) {
+                max_min.second = bomb_red.second;
+                corner = coord;
+                bomb_set = one_set;
+            }
+            if(bomb_red.first &gt; max_min.first){
+                max_min = bomb_red;
+                corner = coord;
+                bomb_set = one_set;
+            }
+        }
+    }
+    visit.clear();
+}
+
+void drop(){
+    for(int j=0; j&lt;n; ++j){
+        int i = n-1;
+        vector&lt;int&gt; newarr(n, -2);
+        bool dropping = false;
+        int it = n-1;
+        while(i &gt; -1){
+            if(map[i][j] == -2) dropping = true;
+            if(dropping){
+                if(map[i][j] == -2){
+                    --i;
+                    continue;
+                }
+                if(map[i][j] == -1){
+                    dropping = false;
+                    newarr[i] = -1;
+                    --i;
+                    it = i;
+                    continue;
+                }
+                else{
+                    newarr[it] = map[i][j];
+                    --i;
+                    --it;
+                }
+            }
+            else{
+                newarr[it] = map[i][j];
+                --i;
+                --it;
+            }
+        }
+        for(int i=0; i&lt;n; ++i){
+            map[i][j] = newarr[i];
+        }
+    }
+}
+
+void rotate(){
+    vector&lt;vector&lt;int&gt;&gt; newmap(n, vector&lt;int&gt;(n));
+    for(int i=0; i&lt;n; ++i){
+        for(int j=0; j&lt;n; ++j){
+            newmap[n-1-j][i] = map[i][j];
+        }
+    }
+    map = newmap;
+}
+
+void print_map(){
+        for(int i=0; i&lt;n; ++i){
+            for(int j=0; j&lt;n; ++j){
+                cout &lt;&lt; map[i][j] &lt;&lt; &quot; &quot;;
+            }cout &lt;&lt; endl;
+        }cout &lt;&lt;&quot;-----------------------------------&quot;&lt;&lt;endl;
+}
+
+
+int main() {
+    // 여기에 코드를 작성해주세요.
+    cin &gt;&gt; n &gt;&gt; m;
+    total = 0;
+    MAX = n*n;
+    map = vector&lt;vector&lt;int&gt;&gt;(n, vector&lt;int&gt;(n));
+    for(int i=0; i&lt;n; ++i){
+        for(int j=0; j&lt;n; ++j){
+            cin &gt;&gt; map[i][j];
+        }
+    }
+    while(true){
+        search();
+        if(bomb_set.empty()) break;
+        for(int i=0; i&lt;bomb_set.size(); ++i){
+            map[bomb_set[i].first][bomb_set[i].second] = -2;
+        }
+        total += bomb_set.size() * bomb_set.size();
+        bomb_set.clear();
+        drop();
+        // print_map();
+        rotate();
+        // print_map();
+        drop();
+        // print_map();
+        // cout&lt;&lt;&quot;//////////////////&quot;&lt;&lt;endl;
+    }
+
+    cout &lt;&lt; total&lt;&lt;endl;
+    map.clear();
+    return 0;
+}</code></pre></details></li></ul><hr id="f1c2d66d-c2e4-40a0-a114-be982ff1d355"/><h3 id="5e6396c4-e336-4930-b6d3-8dc2ae2be6b5" class="">문제 분석</h3><ul id="c5d742b3-f094-4de0-b59d-b3760c3ad815" class="toggle"><li><details open=""><summary>문제 상황</summary><ol type="1" id="fa3e2ba7-321c-4eb9-9731-ec7c7ed14950" class="numbered-list" start="1"><li>n * n 격자판<ol type="a" id="697cb559-dc50-4ef9-ae3a-21c7da7296cf" class="numbered-list" start="1"><li>-1 : 검은 돌</li></ol><ol type="a" id="135dd063-722b-4342-a731-a2441ba288e1" class="numbered-list" start="2"><li>0 : 빨간 폭탄</li></ol><ol type="a" id="92504ab9-b530-488e-9f77-52afe1ed04ae" class="numbered-list" start="3"><li>[1, m] : m가지 색깔의 폭탄</li></ol></li></ol><ol type="1" id="addf58da-f7f8-406c-85f4-2eadc045e65d" class="numbered-list" start="2"><li>폭탄 묶음이 존재하는 동안 시행<ol type="a" id="517b7e0d-9624-4c95-98c9-b3b48efbf4b2" class="numbered-list" start="1"><li>폭탄 묶음 : 2개 이상으로 구성된, 빨간 색을 제외한 한 가지 색깔 or 빨간색과 한 개의 색깔로 이루어진 서로 인접한 칸들의 집합</li></ol><ol type="a" id="c63ca214-4a08-4eeb-b23d-5506250e7f6f" class="numbered-list" start="2"><li>폭탄 묶음 제거  - 우선 순위<ol type="i" id="b39690d9-636d-4409-aa1d-08b53bb2e82b" class="numbered-list" start="1"><li>묶음 내 폭탄 수 최다</li></ol><ol type="i" id="df3e1357-e0cc-46a4-84ad-2e43bf53c285" class="numbered-list" start="2"><li>묶음 내 빨간 폭탄 수 최소</li></ol><ol type="i" id="4ff6bab6-6f5e-4f62-83b4-aed7793dbf65" class="numbered-list" start="3"><li>묶음 내 기준점 (빨간 색 이외의 폭탄이 위치한 가장 하측 좌단의 칸)이 가장 하측 좌단 방향</li></ol></li></ol><ol type="a" id="17d2d773-2ff0-4dd8-9be8-e7d52878ee26" class="numbered-list" start="3"><li>폭탄 제거 후 모든 폭탄 중력 방향으로 낙하<ol type="i" id="023542f9-9eb6-4836-b4c8-faa46e312709" class="numbered-list" start="1"><li>중력 방향은 +x방향</li></ol><ol type="i" id="b85d7bd6-8189-490a-ab32-14ca4384c2fc" class="numbered-list" start="2"><li>검은 돌은 고정</li></ol></li></ol><ol type="a" id="fb877abf-9cea-498e-9ba1-7508633e962b" class="numbered-list" start="4"><li>격자판 회전 : 반시계 방향 90도</li></ol><ol type="a" id="b6cf8f8c-e490-4c05-87b5-1544cbefae78" class="numbered-list" start="5"><li>다시 폭탄 낙하</li></ol></li></ol><ol type="1" id="62702285-aa7d-46d4-b71a-39b96207b102" class="numbered-list" start="3"><li>폭탄 묶음을 찾을 수 없을 시 종료</li></ol></details></li></ul><ul id="1cc9be2c-60d9-43de-b82a-44f2c91cdf37" class="toggle"><li><details open=""><summary>목표</summary><ol type="1" id="1553c09c-2344-4a2c-8bd2-9213801e1757" class="numbered-list" start="1"><li>폭탄 제거 시 폭탄 묶음 크기의 제곱만큼 점수 추가</li></ol><ol type="1" id="6000308f-d57f-4274-b3f4-3067207c33e6" class="numbered-list" start="2"><li>시행 종료 후 점수 계산</li></ol></details></li></ul><hr id="56d63bac-0ed4-4562-af52-77007104c164"/><p id="848e5186-ae95-4846-b7e8-bdd82b9f46b9" class=""><strong>풀이 과정</strong></p><ol type="1" id="37a458e0-0076-411b-aa9e-4ae9cad09f06" class="numbered-list" start="1"><li>행렬 내 영역 탐지<ol type="a" id="868bfc0d-7564-419c-88ad-fccf2e0a277f" class="numbered-list" start="1"><li>시작 color 기록, 빨간 색일 시 다른 색깔 만났을 경우 color값 변경</li></ol><ol type="a" id="cb0944a7-8dd0-4862-b0b4-4d97df59850e" class="numbered-list" start="2"><li>풀이 중 놓친 예외 케이스 발견으로 인한 다수의 변경</li></ol></li></ol><ol type="1" id="d05a87f9-98e6-4062-aecf-66e7eac0c1a8" class="numbered-list" start="2"><li>폭탄 낙하 <ol type="a" id="2c9a2686-b592-4930-95fc-8865576edeb7" class="numbered-list" start="1"><li>열 기준 for문, 행 기준 while문</li></ol><ol type="a" id="1fe2b64a-17e9-4ebe-8430-5092ed369693" class="numbered-list" start="2"><li>빈칸 감지 시 빈칸 통합 측정 후 폭탄 통합 측정으로 한번에 하려 시도 → 다른 방법으로 선회</li></ol><ol type="a" id="681d814f-5000-4aa2-a0b7-97cc813cfb8d" class="numbered-list" start="3"><li>대체시킬 새로운 vector 형성 후 하나의 행과 새로운 vector 동시에 iterate<ol type="i" id="b3e594af-1f96-4674-965c-172e19adacd2" class="numbered-list" start="1"><li>폭탄 감지<ol type="1" id="8c3fbe64-fda8-4b07-b1e7-1415d939b187" class="numbered-list" start="1"><li>낙하 중일 경우 낙하 위치에 안착, 둘다 +1</li></ol><ol type="1" id="63f6e93c-a2ef-4538-844d-92ee041bb9e4" class="numbered-list" start="2"><li>낙하 중이지 않을 경우 낙하 위치==감지 위치에 안착, 둘다 +1</li></ol></li></ol><ol type="i" id="1cc17557-f629-4ece-8d9d-26ecd9b1f0e2" class="numbered-list" start="2"><li>빈칸 감지<ol type="1" id="e8e8737e-45e8-47a4-86c3-9a3d6c2e7e3e" class="numbered-list" start="1"><li>낙하 중으로 변경</li></ol><ol type="1" id="fa425bad-722b-4db2-9995-e40d99b3dbb7" class="numbered-list" start="2"><li>감지 위치만 +1</li></ol></li></ol><ol type="i" id="5504eb52-0bb3-4d39-81ba-4726416ba6fe" class="numbered-list" start="3"><li>검은돌 감지<ol type="1" id="53697197-40cf-44e9-8c6c-cd444d62fc39" class="numbered-list" start="1"><li>낙하 위치=감지 위치</li></ol><ol type="1" id="81a5f810-cc8f-4106-8bfa-5ed05f2ea33e" class="numbered-list" start="2"><li>낙하 위치==감지 위치에 검은돌 안착</li></ol><ol type="1" id="bfbf5ebb-3459-4fc7-a48b-ca942bfe966f" class="numbered-list" start="3"><li>둘다 +1</li></ol></li></ol></li></ol><ol type="a" id="9a2c5650-8547-4ac0-a4e2-9b0982e5414f" class="numbered-list" start="4"><li>해당 행 새로운 vector값으로 채워넣음</li></ol></li></ol><p id="cc9ac214-42e9-44c7-9af2-a151c7081554" class=""><strong>쟁점</strong></p><ol type="1" id="7bb4af21-ae5c-4e04-b94e-f5df68cf020d" class="numbered-list" start="1"><li>구현 난이도는 높지 않아보였으나 예외 케이스 놓침</li></ol><ol type="1" id="1a9a60b6-b58a-4cf4-9eb1-f4237494f444" class="numbered-list" start="2"><li>빨간 폭탄의 변수로 인한 영역 탐지 코드의 잦은 수정<ol type="a" id="5845186f-c635-4afe-821d-a058bd08e487" class="numbered-list" start="1"><li>visit vector로 영역 탐지 시 빨간 폭탄의 1회 탐지만 가능</li></ol><ol type="a" id="d7d4aabc-adca-44b8-a383-06de75b74fb0" class="numbered-list" start="2"><li>빨간 폭탄부터 시작할 시 연결 가능한 색깔이 여러 개여도 하나만 감지하는 문제</li></ol><ol type="a" id="d281729c-78b5-43c2-97d9-14f5779c9293" class="numbered-list" start="3"><li>빨간 폭탄부터 시작하는 case를 제거함으로 1차 해결</li></ol><ol type="a" id="4b8f2df0-f3ab-46f9-ad5f-21aa9b39ae10" class="numbered-list" start="4"><li>visit을 boolean이 아닌 int로 기록해 새로운 색깔로 시작된 영역이 빨간 폭탄을 만나도 포함시킬 수 있도록 2차 해결</li></ol></li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
