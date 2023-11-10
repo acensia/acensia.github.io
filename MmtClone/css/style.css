@@ -1,0 +1,36 @@
+body{
+    height : 100vh;
+    width : 100vw;
+    background-image: url("../bg/0.jpg");
+    background-size: cover;
+}
+
+div{
+    background-color: white;
+    max-width: 200px;
+}
+
+#loginForm{
+    background-color: white;
+    max-width: 200px;
+}
+
+#greetingForm{
+    background-color: aquamarine;
+}
+
+#clockDiv{
+    background-color: aquamarine;
+    max-width: 200px;
+}
+
+#logoutBtn{
+    padding: 10px 5px;
+    font-size:small;
+    white-space: nowrap;
+    text-align: left;
+}
+
+#todoDiv{
+    max-width: 450px;
+}

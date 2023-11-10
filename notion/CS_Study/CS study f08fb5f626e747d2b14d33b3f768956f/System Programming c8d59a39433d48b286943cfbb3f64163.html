@@ -1,0 +1,681 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>System Programming</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="c8d59a39-433d-48b2-8694-3cfbb3f64163" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1613677135043-a2512fbf49fa?ixlib=rb-4.0.3&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🖥️</span></div><h1 class="page-title">System Programming</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-person"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesPerson"><path d="M10.9536 7.90088C12.217 7.90088 13.2559 6.79468 13.2559 5.38525C13.2559 4.01514 12.2114 2.92017 10.9536 2.92017C9.70142 2.92017 8.65137 4.02637 8.65698 5.39087C8.6626 6.79468 9.69019 7.90088 10.9536 7.90088ZM4.4231 8.03003C5.52368 8.03003 6.42212 7.05859 6.42212 5.83447C6.42212 4.63843 5.51245 3.68945 4.4231 3.68945C3.33374 3.68945 2.41846 4.64966 2.41846 5.84009C2.42407 7.05859 3.32251 8.03003 4.4231 8.03003ZM1.37964 13.168H5.49561C4.87231 12.292 5.43384 10.6074 6.78711 9.51807C6.18628 9.14746 5.37769 8.87231 4.4231 8.87231C1.95239 8.87231 0.262207 10.6917 0.262207 12.1628C0.262207 12.7974 0.548584 13.168 1.37964 13.168ZM7.50024 13.168H14.407C15.4009 13.168 15.7322 12.8423 15.7322 12.2864C15.7322 10.8489 13.8679 8.88354 10.9536 8.88354C8.04492 8.88354 6.17505 10.8489 6.17505 12.2864C6.17505 12.8423 6.50635 13.168 7.50024 13.168Z"></path></svg></span>소유자</th><td><span class="user"><img src="https://lh3.googleusercontent.com/a/AATXAJwHji_UuD1ZsCAY0Mu-n0PDt7ExAMKhr-MpXgua=s100" class="icon user-icon"/>준혁 최</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>태그</th><td></td></tr></tbody></table></header><div class="page-body"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="63094b05-2e12-4603-884f-c074e7583b87"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">이 템플릿에 코드 리뷰 방법을 정리하세요. 특히 신입 직원과 원격 근무를 하는 직원에게 가이드라인을 제공하는 데 유용합니다.</div></figure><nav id="bd8e6026-2c75-4e3b-9f77-23e25349784e" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2985a1f7-52d9-4957-9556-2e4b6a5c4692">Memory Structure</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#af320759-de82-4cb3-a230-125e8cf67fec">code</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b8625b3a-c398-4876-86e0-1c75abe9fb5f">data</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f47c04a9-575d-4540-a189-a3e0991db683">heap</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#13b0e7ba-0b9e-4472-8cd5-ffda77335fd0">stack</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e56dd544-89f8-47d6-9d58-d4d4fb1d18aa">Process vs Thread</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b309c06b-3844-40f2-bb40-c7f1387cf2a1">Process</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1ac1735d-52b7-4672-af88-3f815c3679aa">Thread</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#a2cba6bf-aa68-49e7-ba94-f70984a3e061">Process hierarchy</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#db3ba8a8-3a7c-4c0e-b6d5-52ec05ecdc83">Synchronization</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#952d086f-82cc-40e0-9659-68ce46451c45">Sync vs Async</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d77cc677-8857-4a64-b888-3c192a62cfee">Critical Section</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#7c9b6025-692a-43b8-a939-53e9d0db3f5a">Operating System</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b5192eea-9238-4c9e-8928-b468703e1920">Including / Not including</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9f9a81f7-6460-4108-bcd0-ebc293f2e2f8">역할</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#1ab428a7-0b32-4439-b82e-2780893b46df">Interrupt</a></div></nav><h1 id="2985a1f7-52d9-4957-9556-2e4b6a5c4692" class="">Memory Structure</h1><h2 id="af320759-de82-4cb3-a230-125e8cf67fec" class="">code</h2><p id="65a35f14-5af1-48aa-b55c-087b20f8b647" class="">also called “text section”</p><p id="6a3127c7-a8ae-4eb7-8194-dd64e41ddbe8" class="">code of executing program</p><h2 id="b8625b3a-c398-4876-86e0-1c75abe9fb5f" class="">data</h2><p id="210ed019-6dc7-40de-bef4-22b874122af7" class="">store global, static variables</p><p id="cbec72ae-f916-4fd3-9869-a43ed8f52680" class="">constructed and destructed while program starts and ends</p><h2 id="f47c04a9-575d-4540-a189-a3e0991db683" class="">heap</h2><p id="60605bc4-42bc-4930-8b83-680bcdd0caec" class="">managed by user</p><p id="771c73a2-21e1-45e8-b323-8fbf2c1fa490" class="">allocated and freed dynamically</p><p id="65ab8d75-70da-4fa0-a5ea-33415dff7c46" class="">located from low to high address</p><ul id="032e9ec6-348d-40c6-963a-7b5d727220e9" class="bulleted-list"><li style="list-style-type:disc">pros<ul id="f030fa94-0aae-43f6-be83-095f028955a2" class="bulleted-list"><li style="list-style-type:circle">global access</li></ul><ul id="719cf35e-f507-41fb-b7dd-2b7ce778ef98" class="bulleted-list"><li style="list-style-type:circle">no space limit</li></ul></li></ul><ul id="544c3f20-b25b-40b5-b946-384c73153dda" class="bulleted-list"><li style="list-style-type:disc">cons<ul id="27f72973-b5f6-4ac2-a3ee-bcd52a13fb9d" class="bulleted-list"><li style="list-style-type:circle">slow access</li></ul><ul id="7d3ccf9b-94af-4aca-a590-812dee812b04" class="bulleted-list"><li style="list-style-type:circle">memory fragment (need to be managed by user)</li></ul></li></ul><h2 id="13b0e7ba-0b9e-4472-8cd5-ffda77335fd0" class="">stack</h2><p id="7c75baa3-0993-4fb6-bb2e-68d2350027cd" class="">local variables and parameters</p><p id="9e0dc5c0-b144-4ba8-977d-b748738c6df5" class="">LIFO</p><p id="49364f6a-2336-4ee8-80f1-30d0727cc28d" class="">located from high to low address</p><ul id="5e4df5fb-483b-4cb4-8bc3-f5fa48b064e6" class="bulleted-list"><li style="list-style-type:disc">pros<ul id="79a85f0b-0370-4b5c-9ccd-ee241eb4b5fc" class="bulleted-list"><li style="list-style-type:circle">fast access</li></ul><ul id="17bf8369-88e2-4d96-9f2e-e818bd06a6fa" class="bulleted-list"><li style="list-style-type:circle">auto free, managed by CPU</li></ul></li></ul><ul id="e7a2d438-1278-4879-9a70-6cda7488ea2a" class="bulleted-list"><li style="list-style-type:disc">cons<ul id="1a9ef245-acdf-4461-b639-38e7d30f12ce" class="bulleted-list"><li style="list-style-type:circle">space limit</li></ul><ul id="ede5c5ff-e04d-47ae-bde4-ba8e5c839fec" class="bulleted-list"><li style="list-style-type:circle">size is not changable</li></ul></li></ul><h1 id="e56dd544-89f8-47d6-9d58-d4d4fb1d18aa" class="">Process vs Thread</h1><h2 id="b309c06b-3844-40f2-bb40-c7f1387cf2a1" class="">Process</h2><p id="8a52ae29-a563-42ed-a34d-12c0e1052d9a" class="">CPU 자원 할당의 단위</p><p id="57f62c58-f1dc-48d1-bc7a-a4616061a540" class="">sections : text, data, bss, etc…</p><ul id="d15401e9-ff19-455d-9478-0b397942dc72" class="bulleted-list"><li style="list-style-type:disc">text<ul id="82eca846-d187-4e6e-9fa9-70fed0649dba" class="bulleted-list"><li style="list-style-type:circle">executable code, read-only data</li></ul></li></ul><ul id="a03e21b2-a9df-42e3-b45e-654864d5cbe8" class="bulleted-list"><li style="list-style-type:disc">data<ul id="c4b0f7a6-9533-4b4a-87f1-0f7f3f257f72" class="bulleted-list"><li style="list-style-type:circle">initialized data (read-write)</li></ul></li></ul><ul id="7036e4a7-018e-419d-87fc-50e2c8c9e17c" class="bulleted-list"><li style="list-style-type:disc">bss<ul id="89ab6a57-ae17-4171-9fe8-12b8acb2cc80" class="bulleted-list"><li style="list-style-type:circle">uninitialized data (mapped </li></ul></li></ul><p id="c4ac0880-d7b0-4b4f-a394-4a17337620cf" class="">resources : timers, pending signals, open files, network connections…<div class="indented"><p id="f0167e6c-1863-4f29-b511-590e83bccc79" class="">stored inside the kernel in the process’s process descriptor</p></div></p><h2 id="1ac1735d-52b7-4672-af88-3f815c3679aa" class="">Thread</h2><p id="1162cb88-aa77-447d-a15c-c5b0a9d55cb1" class="">프로세스 내 수행 단위 (unit of activity : Linux System Programming p17)</p><p id="5bc3dad2-e8f7-41cf-9471-6560fcde61b6" class="">stack (stores local variable), processor state, current location in the object code</p><p id="91c050c4-2547-4448-9eec-3c3ef257e97d" class="">thread ID, pc(program counter)</p><p id="da4e258d-d553-4983-8bb1-61aa92d0d0a1" class="">
+</p><h2 id="a2cba6bf-aa68-49e7-ba94-f70984a3e061" class="">Process hierarchy</h2><p id="0289d78a-07ba-4de4-b290-a9b8cdccd247" class="">identified as PID (process ID)</p><p id="3dc6877a-7de5-4a7d-af19-82e943990db9" class="">fork() : duplicate the calling process (parent), create new process(child)</p><p id="b5b2a668-835f-44f4-8398-e811e98c3650" class="">Child is reparented to the init process by kernel if the parent is killed earlier</p><p id="a7cb38fc-e4cc-403b-9da8-42feec5f1464" class="">When child process terminated, parts of its resident in memory are kept - allow the parent to inquire(<strong>wait()</strong>) about its status upon terminating<div class="indented"><p id="0dc6d55f-ebfb-447b-b12d-98a31ca23920" class="">zombie process : terminated but not waited</p></div></p><p id="fa4f7eb8-99e2-4818-8908-faa8690d124e" class="">
+</p><h1 id="db3ba8a8-3a7c-4c0e-b6d5-52ec05ecdc83" class="">Synchronization</h1><h2 id="952d086f-82cc-40e0-9659-68ce46451c45" class="">Sync vs Async</h2><p id="e8bfcd20-a6b3-4b8c-9965-1b88dd3e9863" class="">sync : simultaneously, one blocked until others returned</p><p id="c64034fc-0f5c-49e3-84d5-fef149f25ac8" class="">async : assign task to event queue or background thread, and start the code following, not returned</p><h2 id="d77cc677-8857-4a64-b888-3c192a62cfee" class="">Critical Section</h2><p id="bc91564a-f7e6-435f-ab62-dda1e7a91419" class="">the section for accessing same resources</p><p id="ed2f9a95-89ab-4908-82a6-8522a91820c8" class="">requirement<div class="indented"><p id="688f803c-459c-42c8-9c12-038116650ea8" class="">mutual exclusion : only single process executed on</p><p id="257696ef-44b3-4454-b09f-317dd7cd443d" class="">progress : processes with no action only can be in</p><p id="a3194c00-d561-4b3d-ba67-517d2ec0a726" class="">bounded waiting : the number of entry of other processes while applying one process is limited</p></div></p><p id="fe345f0b-c992-4e8b-868c-6ce34d4497a2" class="">Solutions :</p><ul id="3672dafb-7cfd-4d55-a32f-67e1c3ec8b23" class="bulleted-list"><li style="list-style-type:disc">mutex lock<ul id="cae2593e-d29c-41de-8601-1cb4ae9f8b7d" class="bulleted-list"><li style="list-style-type:circle">limitation : time efficiency on multi-process</li></ul></li></ul><ul id="809cbf99-9255-4888-b894-cb7f4e7746c4" class="bulleted-list"><li style="list-style-type:disc">semaphores<ul id="258b5065-c707-42e6-81ff-4675346d4819" class="bulleted-list"><li style="list-style-type:circle">countable permissions to give processes</li></ul><ul id="4cf55c2f-3c56-4e5b-b648-a13bfe438e26" class="bulleted-list"><li style="list-style-type:circle">binary semaphores ~= mutex</li></ul><ul id="8f6a132d-d351-4771-9c29-9919077811ba" class="bulleted-list"><li style="list-style-type:circle">spinlock : looping while available lock checked → efficient for short term blocking</li></ul></li></ul><ul id="750c7647-9408-448f-a1ec-7efc60d5f192" class="bulleted-list"><li style="list-style-type:disc">deadlock<ul id="d9bc3118-a9af-40f8-aaa5-4017717a9ceb" class="bulleted-list"><li style="list-style-type:circle">case that multiple threads are waiting for unlock</li></ul></li></ul><p id="1cf176ba-d8d1-46b9-9509-060055ac6dd3" class="">
+</p><h1 id="7c9b6025-692a-43b8-a939-53e9d0db3f5a" class="">Operating System</h1><h2 id="b5192eea-9238-4c9e-8928-b468703e1920" class="">Including / Not including</h2><ul id="6347e2d3-feb1-48eb-af43-01a00e50356a" class="bulleted-list"><li style="list-style-type:disc">including<ul id="8cca3cc3-01fb-4c86-bf39-2ab6188109b1" class="bulleted-list"><li style="list-style-type:circle">GUI</li></ul><ul id="0c79b0be-286c-4b68-9a2f-a443a00f8f8d" class="bulleted-list"><li style="list-style-type:circle">kernel</li></ul><ul id="390d09be-f8bc-4a96-9e06-53c40d1c7637" class="bulleted-list"><li style="list-style-type:circle">driver</li></ul><ul id="e57c1cd2-360a-4a08-8217-fdddc119b5a7" class="bulleted-list"><li style="list-style-type:circle">system call</li></ul></li></ul><ul id="0dbd56a7-b6fc-49c8-b25d-c565e0aa74f2" class="bulleted-list"><li style="list-style-type:disc">not including<ul id="b8bfb157-af52-4f4f-bc27-a71decb7b804" class="bulleted-list"><li style="list-style-type:circle">user program (in terms of program structure)</li></ul><ul id="ea9178da-53f5-49c4-badb-27906b76db29" class="bulleted-list"><li style="list-style-type:circle">hardware (hdd, …)</li></ul></li></ul><h2 id="9f9a81f7-6460-4108-bcd0-ebc293f2e2f8" class="">역할</h2><p id="be464b90-7336-494b-83f6-a0c2683519f4" class="">CPU scheduling (to give processes memory or..)</p><p id="c0f3a9a1-8de6-491f-811c-8f5d09850a7f" class="">Memory Management</p><p id="72e04863-24ee-4db3-96d1-d4351b90250e" class="">Disk file </p><p id="1fe209c9-a032-44e1-9e59-ace32bb2edba" class="">I/O device management<div class="indented"><p id="ec3fbcc7-a092-476c-af95-d8f9347634cc" class="">Windows : plug-in </p><p id="bf1d26ac-58da-4847-84b1-b0fc153fa3ae" class="">
+</p></div></p><h2 id="1ab428a7-0b32-4439-b82e-2780893b46df" class="">Interrupt</h2><p id="bb33d595-9de1-42df-9cb0-7e067d80bb14" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

@@ -1,0 +1,1 @@
+Sitemap: https://acensia.github.io/Progress3/jekyll-theme-yat/sitemap.xml
