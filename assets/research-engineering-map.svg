@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 620" role="img" aria-labelledby="title desc">
+  <title id="title">Research and engineering map</title>
+  <desc id="desc">A structured visual map connecting research questions, systems, evaluation, and impact.</desc>
+  <rect width="760" height="620" fill="#fbfcf8"/>
+  <rect x="44" y="42" width="672" height="536" rx="20" fill="#eef3ec" stroke="#dce2db" stroke-width="2"/>
+  <path d="M112 438C210 310 262 238 380 300C498 362 526 228 650 146" fill="none" stroke="#245f56" stroke-width="6" stroke-linecap="round"/>
+  <path d="M114 478C214 398 288 382 376 418C470 457 541 393 647 322" fill="none" stroke="#b9653b" stroke-width="4" stroke-linecap="round" stroke-dasharray="14 14"/>
+  <g font-family="Inter, Arial, sans-serif">
+    <g>
+      <rect x="92" y="112" width="194" height="92" rx="14" fill="#ffffff" stroke="#dce2db" stroke-width="2"/>
+      <text x="116" y="149" fill="#17201b" font-size="24" font-weight="800">Research</text>
+      <text x="116" y="178" fill="#5f6a62" font-size="18">questions</text>
+    </g>
+    <g>
+      <rect x="474" y="102" width="194" height="92" rx="14" fill="#ffffff" stroke="#dce2db" stroke-width="2"/>
+      <text x="498" y="139" fill="#17201b" font-size="24" font-weight="800">Systems</text>
+      <text x="498" y="168" fill="#5f6a62" font-size="18">that make ideas real</text>
+    </g>
+    <g>
+      <rect x="296" y="264" width="194" height="92" rx="14" fill="#153f3a"/>
+      <text x="320" y="301" fill="#ffffff" font-size="24" font-weight="800">Build</text>
+      <text x="320" y="330" fill="#dce2db" font-size="18">measure, iterate</text>
+    </g>
+    <g>
+      <rect x="94" y="424" width="194" height="92" rx="14" fill="#ffffff" stroke="#dce2db" stroke-width="2"/>
+      <text x="118" y="461" fill="#17201b" font-size="24" font-weight="800">Engineering</text>
+      <text x="118" y="490" fill="#5f6a62" font-size="18">constraints</text>
+    </g>
+    <g>
+      <rect x="472" y="432" width="194" height="92" rx="14" fill="#ffffff" stroke="#dce2db" stroke-width="2"/>
+      <text x="496" y="469" fill="#17201b" font-size="24" font-weight="800">Impact</text>
+      <text x="496" y="498" fill="#5f6a62" font-size="18">beyond prototypes</text>
+    </g>
+  </g>
+  <circle cx="380" cy="310" r="74" fill="#245f56" opacity="0.12"/>
+  <circle cx="380" cy="310" r="42" fill="#245f56"/>
+  <path d="M363 310l13 13 26-31" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
