@@ -1,6 +1,6 @@
 # Personal Profile Page
 
-This is a static GitHub Pages-ready profile page for Junhyuk Choi.
+This is a static GitHub Pages-ready profile page for Junhyeok Choi.
 
 ## Customize Before Publishing
 

@@ -82,18 +82,22 @@ section p {
   margin-top: 18px;
 }
 
-/* News */
-.news {
+/* News — shared two-column layout: the date column sizes to the longest
+   date so text can never overlap it, regardless of font or zoom. */
+.news,
+.cv-list {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 20px;
+  row-gap: 10px;
 }
 
-.news li {
-  margin-bottom: 8px;
-  display: grid;
-  grid-template-columns: 90px minmax(0, 1fr);
-  gap: 12px;
+.news li,
+.cv-list li {
+  display: contents;
 }
 
 .date {
@@ -137,18 +141,21 @@ section p {
   font-size: 0.95rem;
 }
 
-/* Education / Experience */
-.cv-list {
+/* Sub-roles nested under an experience entry */
+.sub-roles {
   list-style: none;
-  margin: 0;
+  margin: 4px 0 0;
   padding: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 14px;
+  row-gap: 2px;
 }
 
-.cv-list li {
-  display: grid;
-  grid-template-columns: 130px minmax(0, 1fr);
-  gap: 12px;
-  margin-bottom: 10px;
+.sub-roles li {
+  display: contents;
 }
 
 footer {
@@ -172,9 +179,26 @@ footer p {
     order: -1;
   }
 
+  .news,
+  .cv-list,
+  .sub-roles {
+    display: block;
+  }
+
   .news li,
-  .cv-list li {
-    grid-template-columns: 1fr;
-    gap: 0;
+  .cv-list li,
+  .sub-roles li {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .news .date,
+  .cv-list .date,
+  .sub-roles .date {
+    display: block;
+  }
+
+  .sub-roles li {
+    margin-bottom: 6px;
   }
 }
