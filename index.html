@@ -57,32 +57,42 @@
       <section>
         <h2>Research &amp; Projects</h2>
         <p class="section-note">
-          Publications will be listed here. Until then, selected research and engineering projects.
+          Selected publications, research, and engineering projects.
         </p>
 
         <div class="pub">
           <div class="pub-body">
-            <span class="pub-title">Research project title</span>
-            <span class="pub-authors"><strong>Junhyeok Choi</strong>, Collaborator Name</span>
-            <span class="pub-venue">Seoul National University, 2026 — in progress</span>
+            <span class="pub-title">Mine-JEPA: In-Domain Self-Supervised Learning for Mine-Like Object Classification in Side-Scan Sonar</span>
+            <span class="pub-authors">Taeyoun Kwon, Youngwon Choi, Hyeonyu Kim, Myeongkyun Cho, <strong>Junhyeok Choi</strong>, Moon Hwan Kim</span>
+            <span class="pub-venue">CVPR 2026 Workshop on Maritime Computer Vision (MaCVi)</span>
             <p class="pub-desc">
-              One or two sentences on the problem, the method or system built, and the current
-              status or result.
+              Side-scan sonar mine classification suffers from extreme data scarcity and a large
+              domain gap from natural images. Mine-JEPA is an in-domain self-supervised pretraining
+              pipeline that, trained on only about a thousand unlabeled sonar images, outperforms a
+              fine-tuned DINOv3 foundation model on mine vs. non-mine and three-class mine-like
+              object classification, with a compact ViT-Tiny backbone using 4&times; fewer parameters.
             </p>
-            <span class="pub-links">[<a href="#">project</a>] [<a href="#">code</a>]</span>
+            <span class="pub-links">[<a href="https://arxiv.org/abs/2604.00383">arXiv</a>]</span>
           </div>
+        </div>
         </div>
 
         <div class="pub">
           <div class="pub-body">
-            <span class="pub-title">Production system or product contribution</span>
-            <span class="pub-authors"><strong>Junhyeok Choi</strong></span>
-            <span class="pub-venue">Maum.ai, 2024–2026</span>
+            <span class="pub-title">RAL: Robot Abstraction Layer</span>
+            <span class="pub-authors"><strong>Junhyeok Choi</strong>, Maum.ai robot development team</span>
+            <span class="pub-venue">Maum.ai, 2025–2026 — proprietary, in production use</span>
             <p class="pub-desc">
-              One or two sentences on the engineering challenge, your ownership, the stack, and
-              the user or business impact.
+              Robot fleets are built from hardware with different sensors, control stacks, and
+              vendor protocols, so application logic tends to become tied to a single robot model.
+              RAL is a unified control interface and background service that lets the same
+              high-level code run across quadrupeds from multiple vendors, while centrally managing 
+              command and control-session lifecycles so behavior stays predictable and safe. It 
+              serves as the common foundation for the company&rsquo;s robot intelligence and 
+              fleet-management applications.
             </p>
           </div>
+        </div>
         </div>
 
         <div class="pub">
@@ -167,7 +177,7 @@
       </section>
 
       <footer>
-        <p>Last updated August 2026.</p>
+        <p>Last updated September 2026.</p>
       </footer>
     </main>
   </body>
