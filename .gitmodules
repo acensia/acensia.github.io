@@ -1,0 +1,3 @@
+[submodule "awesome-mani-benchmark"]
+	path = thirdparty/awesome-mani-benchmark
+	url = https://github.com/acensia/awesome-mani-benchmark.git
